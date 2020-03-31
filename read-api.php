@@ -24,7 +24,7 @@ $q=$_REQUEST['q'];
 			
 			echo '{"id":"'.$current['id'].'","firstname":"'.$current['firstname'].'","lastname":"'.$current['lastname'].'"}';
 			$found=true;
-			//comment
+			//comment com
 		}
 	}
 	
