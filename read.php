@@ -1,5 +1,4 @@
 <?php
-
 include('ApiHandler.php');
 
 $q=$_GET['q'];

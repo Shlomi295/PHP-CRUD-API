@@ -1,19 +1,23 @@
 <?php 
 include('ApiHandler.php');
-$url = "https://personal-sites.deakin.edu.au/~smoreh/sit780/api/create.php";
 
-$handle = curl_init();
-curl_setopt($handle,CURLOPT_URL,$url);
-curl_setopt($handle, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($handle, CURLOPT_POST, 1);
-$output = curl_exec($handle);
-curl_close($handle);
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json; charset=UTF-8");
 
-$result= json_decode($output, true);
+$id = $_POST['id'];
+$firstName = $_POST['firstname'];
+$lastName = $_POST['lastName'];
 
-print "<!DOCTYPE html> <html><head><title>cURL</title></head><body>";
-print "<table border='1' width='30%'>";
+$json = file_get_contents('employees.json');
+$obj = json_decode($json,true);
+
+$employee = new Employee;
+
+$employee->id = $id;
+$employee->firstName = $firstName;
+$employee->lastName = $lastName;
+
+array_push($obj, $employee);
 
 
 ?>

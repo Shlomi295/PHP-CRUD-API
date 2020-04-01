@@ -16,12 +16,13 @@ function callAPI($method, $url, $request){
       
       case "POST":
          curl_setopt($handle, CURLOPT_POST, 1);
-         if ($request)
+
             curl_setopt($handle, CURLOPT_POSTFIELDS, $request);
          break;
+
        case "DELETE":
          curl_setopt($handle, CURLOPT_CUSTOMREQUEST, "DELETE");  
-         
+
          default:
          if ($request)
             $url = sprintf("%s?%s", $url, http_build_query($request));
@@ -40,7 +41,14 @@ function callAPI($method, $url, $request){
    return $result;
 }
 
-function getBaseUrl(){
+function getBaseUrl()
+{
    return "https://personal-sites.deakin.edu.au/~smoreh/sit780/api/";
+}
+
+class Employee{
+   var $id;
+   var $firstName;
+   var $lastName;
 }
 ?>

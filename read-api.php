@@ -1,5 +1,5 @@
 <?php
-// required headers
+
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
@@ -22,7 +22,7 @@ $q=$_REQUEST['q'];
 			if ($count>0) echo ",";
 			$count++;
 			
-			echo '{"id":"'.$current['id'].'","firstnasdfsdme":"'.$current['firstname'].'","lastname":"'.$current['lastname'].'"}';
+			echo '{"id":"'.$current['id'].'","firstname":"'.$current['firstname'].'","lastname":"'.$current['lastname'].'"}';
 			$found=true;
 		}
 	}
@@ -31,5 +31,7 @@ $q=$_REQUEST['q'];
 		echo '{"message":"not found"}';
 	
 	echo "]";
+
+
 
 ?>
