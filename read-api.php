@@ -22,9 +22,8 @@ $q=$_REQUEST['q'];
 			if ($count>0) echo ",";
 			$count++;
 			
-			echo '{"id":"'.$current['id'].'","firstname":"'.$current['firstname'].'","lastname":"'.$current['lastname'].'"}';
+			echo '{"id":"'.$current['id'].'","firstnasdfsdme":"'.$current['firstname'].'","lastname":"'.$current['lastname'].'"}';
 			$found=true;
-			//comment com
 		}
 	}
 	
