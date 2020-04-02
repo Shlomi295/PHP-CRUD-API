@@ -16,8 +16,8 @@ function callAPI($method, $url, $request){
       
       case "POST":
          curl_setopt($handle, CURLOPT_POST, 1);
-
-            curl_setopt($handle, CURLOPT_POSTFIELDS, $request);
+         curl_setopt($handle,CURLOPT_POST, true);
+         curl_setopt($handle,CURLOPT_POSTFIELDS, $request);  
          break;
 
        case "DELETE":
@@ -50,5 +50,14 @@ class Employee{
    var $id;
    var $firstName;
    var $lastName;
+}
+
+function detectRequestBody() {
+   $rawInput = fopen('php://input', 'r');
+   $tempStream = fopen('php://temp', 'r+');
+   stream_copy_to_stream($rawInput, $tempStream);
+   rewind($tempStream);
+
+   return $tempStream;
 }
 ?>
