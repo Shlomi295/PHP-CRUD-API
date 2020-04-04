@@ -1,20 +1,22 @@
 <?php
 include('ApiHandler.php');
-
 $url = getBaseUrl()."create-api.php";
 
-$id = $_POST['id'];
-$firstName = $_POST['firstname'];
-$lastName = $_POST['lastname'];
+$postdata = file_get_contents("php://input");
+$id = $_REQUEST["id"];
+$firstname = $_REQUEST["firstname"];
+$lastname = $_REQUEST["lastname"];
 
-$postdata = array($id,$firstName,$lastName);
+$arrayRequest = array("id"=>$id,"firstname"=>$firstname,"lastname"=>$lastname);
 
-//$postdata = http_build_query($fields);
-//$postdata = file_get_contents("php://input");
 
-$output = callAPI("POST", $url, $postdata);
+$json = json_encode($arrayRequest,true);
 
-$json = json_decode($output, true);
 
-echo ("<p>$output $json </p>");
+$output = callAPI("POST", $url, $json);
+
+
+var_dump($output);
+
+echo ("<p>$output</p>");
 ?>

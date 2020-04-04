@@ -15,9 +15,10 @@ function callAPI($method, $url, $request){
          break;
       
       case "POST":
+         // curl_setopt($handle, CURLOPT_CUSTOMREQUEST, "POST");
          curl_setopt($handle, CURLOPT_POST, 1);
-         curl_setopt($handle,CURLOPT_POST, true);
-         curl_setopt($handle,CURLOPT_POSTFIELDS, $request);  
+         if ($request)
+         curl_setopt($handle, CURLOPT_POSTFIELDS, $request);
          break;
 
        case "DELETE":
@@ -25,25 +26,40 @@ function callAPI($method, $url, $request){
 
          default:
          if ($request)
-            $url = sprintf("%s?%s", $url, http_build_query($request));
+             $handle = sprintf("%s?%s", $url, http_build_query($request));
    }
 
- 
-   curl_setopt($handle, CURLOPT_HTTPHEADER, array(
-      'Content-Type: application/json',
-   ));
+   curl_setopt($handle, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+   curl_setopt($handle, CURLOPT_HTTPHEADER, [
+      "Content-Type: application/json; charset=UTF-8",
+      "Access-Control-Allow-Origin: *"
+      ]);
 
+      $agent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0; .NET CLR 1.1.4322)";
+
+   curl_setopt($handle, CURLOPT_USERAGENT, $agent);
    curl_setopt($handle, CURLOPT_URL, $url);
-   $result = curl_exec($handle);
-   if(!$result){die("Failed to connect to the API $url");}
-   
-   curl_close($handle);
-   return $result;
+   curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+   curl_setopt($handle, CURLOPT_FOLLOWLOCATION, 1);
+
+   $response = curl_exec($handle);
+        $errno = curl_errno($handle);
+        $err = curl_error($handle);
+
+  curl_close($handle);
+
+  if ($errno) {
+   return "cURL Error #:" . $err;
+} else {
+   return $response;
+}
+
+
 }
 
 function getBaseUrl()
 {
-   return "https://personal-sites.deakin.edu.au/~smoreh/sit780/api/";
+   return "http://localhost/api/";
 }
 
 class Employee{
@@ -52,12 +68,5 @@ class Employee{
    var $lastName;
 }
 
-function detectRequestBody() {
-   $rawInput = fopen('php://input', 'r');
-   $tempStream = fopen('php://temp', 'r+');
-   stream_copy_to_stream($rawInput, $tempStream);
-   rewind($tempStream);
 
-   return $tempStream;
-}
 ?>
