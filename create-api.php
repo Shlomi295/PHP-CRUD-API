@@ -7,17 +7,18 @@ header("Content-Type: application/json; charset=UTF-8");
 
 $postData = file_get_contents('php://input');
 
-$data = array();
-parse_str($postData, $data);
-
 $json = file_get_contents('employees.json');
 $obj = json_decode($postData,true);
 $jsonarray = json_decode($json,true);
 
 
-
 array_push($jsonarray,$obj);
-$result = json_encode($jsonarray);
+$result = json_response($jsonarray);
+
+
+$file = fopen('employees.json','w');
+fwrite($file,$result);
+fclose($file);
 
 return $result;
 
