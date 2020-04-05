@@ -24,9 +24,6 @@ else{
 
 $result = json_response($jsonarray);
 
-
-
-
 return $result;
 
 ?>
