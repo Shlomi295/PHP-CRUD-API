@@ -14,13 +14,18 @@ $jsonarray = json_decode($json,true);
 
 array_push($jsonarray,$obj);
 
+if ($jsonarray != NULL)
+{
+    saveToFile(json_encode($jsonarray),'employees.json');
+}
+else{
+    $result = "There was something wrong and the Result is empty";
+}
+
 $result = json_response($jsonarray);
 
-saveToFile($result,'employees.json');
 
-// $file = fopen('employees.json','w');
-// fwrite($file,$result);
-// fclose($file);
+
 
 return $result;
 

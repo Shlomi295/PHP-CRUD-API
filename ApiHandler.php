@@ -67,9 +67,9 @@ function json_response($data=null, $httpStatus=200)
 
     header('Status: ' . $httpStatus);
 
-    echo json_encode($data);
+    echo (json_encode($data));
+    exit;
     
-    exit();
 }
 
 function saveToFile($data, $saveTo)
