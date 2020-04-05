@@ -20,12 +20,13 @@ function callAPI($method, $url, $request){
          curl_setopt($handle, CURLOPT_POSTFIELDS, $request);
          break;
 
-       case "DELETE":
-         curl_setopt($handle, CURLOPT_CUSTOMREQUEST, "DELETE");  
+       case "DELETE": 
+         curl_setopt($handle, CURLOPT_CUSTOMREQUEST, "DELETE"); 
+         curl_setopt($handle, CURLOPT_POSTFIELDS, $request);
 
-         default:
-         if ($request)
-             $handle = sprintf("%s?%s", $url, http_build_query($request));
+         // default:
+         // if ($request)
+         //     $handle = sprintf("%s?%s", $url, http_build_query($request));
    }
 
    curl_setopt($handle, CURLOPT_HTTPHEADER, [
@@ -67,8 +68,16 @@ function json_response($data=null, $httpStatus=200)
     header('Status: ' . $httpStatus);
 
     echo json_encode($data);
-
+    
     exit();
+}
+
+function saveToFile($data, $saveTo)
+{
+   $file = fopen($saveTo,'w');
+   fwrite($file, $data);
+   fclose($file);
+
 }
 
 

@@ -1,23 +1,16 @@
 <?php
 include('ApiHandler.php');
 
-$url = getBaseUrl()."create-api.php";
+$url = getBaseUrl()."delete-api.php";
 
 $postdata = file_get_contents("php://input");
-$id = $_REQUEST["id"];
-$firstname = $_REQUEST["firstname"];
-$lastname = $_REQUEST["lastname"];
+$q = $_REQUEST['q'];
 
-$arrayRequest = array("id"=>$id,"firstname"=>$firstname,"lastname"=>$lastname);
-
-
-$json = json_encode($arrayRequest,true);
-
-$output = callAPI("POST", $url, $json);
+$output = callAPI("DELETE", $url, $q);
 $result = json_decode($output, true);
 
 print "<!DOCTYPE html> <html><head><title>cURL</title></head><body>";
-print"<h3>The User was added successfully</h3>";
+print"<h3>The User was removed successfully</h3>";
 print "<table border='1' align='center' width='30%'>";
 
 if ($result!=null)
@@ -37,6 +30,11 @@ if ($result!=null)
 		$vals= $result[$i];
 		print "<tr><td>" . $vals["message"] . "</td></tr>";
 	}
-	print "</table></body></html>";
+    print "</table>";
+    print "<ul>
+    <li><a href='form.html'>Add User</a></li>
+    </ul>";
+    print"</body></html>";
+   
 }
 ?>

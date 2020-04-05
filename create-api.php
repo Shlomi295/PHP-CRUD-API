@@ -13,12 +13,14 @@ $jsonarray = json_decode($json,true);
 
 
 array_push($jsonarray,$obj);
+
 $result = json_response($jsonarray);
 
+saveToFile($result,'employees.json');
 
-$file = fopen('employees.json','w');
-fwrite($file,$result);
-fclose($file);
+// $file = fopen('employees.json','w');
+// fwrite($file,$result);
+// fclose($file);
 
 return $result;
 
