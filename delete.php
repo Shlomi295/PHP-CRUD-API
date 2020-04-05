@@ -11,6 +11,7 @@ $result = json_decode($output, true);
 
 print "<!DOCTYPE html> <html><head><title>cURL</title></head><body>";
 print"<h3>The User was removed successfully</h3>";
+print"<a href='form.html'>Add user</a>";
 print "<table border='1' align='center' width='30%'>";
 
 if ($result!=null)
@@ -18,7 +19,7 @@ if ($result!=null)
 	print "<tr style='background-color:#aaaaaa'><td>Action</td><td>ID</td><td>First Name</td><td>Last Name</td></tr>";
 	for ($i=0;$i<count($result);$i++){
         $vals= $result[$i];
-        print"<tr><td><a href='delete.php?q=$i' id='$i'>Delete</a></td><td>";
+        print"<tr><td><a class='button' href='delete.php?q=$i' id='$i'>Delete</a><a href='update.php?q=$i' id='$i'> Update</a><td>";
 		print  $vals["id"] . "</td><td>";
 		print $vals["firstname"] . "</td><td>";
 		print $vals["lastname"] . "</td></tr>";
@@ -34,6 +35,9 @@ if ($result!=null)
     print "<ul>
     <li><a href='form.html'>Add User</a></li>
     </ul>";
+
+    echo("<a href='form.html'>Add User</a>");
+
     print"</body></html>";
    
 }

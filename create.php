@@ -18,6 +18,8 @@ $result = json_decode($output, true);
 
 print "<!DOCTYPE html> <html><head><title>cURL</title></head><body>";
 print"<h3>The User was added successfully</h3>";
+print"<a href='form.html'>Add user</a>";
+
 print "<table border='1' align='center' width='30%'>";
 
 if ($result!=null)
@@ -37,6 +39,7 @@ if ($result!=null)
 		$vals= $result[$i];
 		print "<tr><td>" . $vals["message"] . "</td></tr>";
 	}
-	print "</table></body></html>";
+    print "</table>
+    </body></html>";
 }
 ?>
