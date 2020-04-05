@@ -22,8 +22,11 @@ else{
     $result = "There was something wrong and the Result is empty";
 }
 
+<<<<<<< HEAD
 $result = json_response($jsonarray);
 
+=======
+>>>>>>> 5c098f1eb99f200ca07b381f70f525c18009627d
 return $result;
 
 ?>
