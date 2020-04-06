@@ -1,32 +1,40 @@
 <?php
-include('ApiHandler.php');
 
-$q=$_GET['q'];
+$q= (isset($_GET['q'])) ? $_GET['q'] : null;
+
 if ($q!=null)
-	$url = getBaseUrl()."read-api.php?q=".$q;
+$url = "http://localhost/api/read-api.php/read-api.php?q=".$q;
 else
-	$url = getBaseUrl()."read-api.php";
-
-$output = callAPI("GET", $url, false);
+	$url = "http://localhost/api/read-api.php";
 
 
+
+	$handle = curl_init();
+	curl_setopt($handle, CURLOPT_URL, $url);
+	curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+	$output = curl_exec($handle);
+	curl_close($handle);
 $result= json_decode($output, true);
 
 print "<!DOCTYPE html> <html><head><title>cURL</title></head><body>";
 print "<table border='1' width='30%'>";
 
-if ($result[0]['message']==null)
+$key = array_search ('not found', $result);
+
+$index = "message";
+if (!$key)
 {
 	print "<tr style='background-color:#aaaaaa'><td>ID</td><td>First Name</td><td>Last Name</td></tr>";
-	for ($i=0; $i< count($result); $i++){
+	for ($i=0;$i<count($result);$i++){
 		$vals= $result[$i];
 		print "<tr><td>" . $vals["id"] . "</td><td>";
 		print $vals["firstname"] . "</td><td>";
 		print $vals["lastname"] . "</td></tr>";
-		
 	}
 	print "</table></body></html>";
-} else {
+} 
+else {
+	
 	print "<tr style='background-color:#aaaaaa'><td>Message</td></tr>";
 	for ($i=0;$i<count($result);$i++){
 		$vals= $result[$i];
@@ -34,5 +42,6 @@ if ($result[0]['message']==null)
 	}
 	print "</table></body></html>";
 }
+
 
 ?>

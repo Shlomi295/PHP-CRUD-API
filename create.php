@@ -13,12 +13,13 @@ $arrayRequest = array("id"=>$id,"firstname"=>$firstname,"lastname"=>$lastname);
 
 $json = json_encode($arrayRequest,true);
 
-$output = callAPI("POST", $url, $json);
+$output = callAPI("POST", $url, $json); // call api handler
 $result = json_decode($output, true);
 
 print "<!DOCTYPE html> <html><head><title>cURL</title></head><body>";
 print"<h3>The User was added successfully</h3>";
-print"<a href='form.html'>Add user</a>";
+print"<a href='form.html'>Add user</a> </br>";
+print"<a href='read.php'>Show all users</a></br>";
 
 print "<table border='1' align='center' width='30%'>";
 
@@ -27,7 +28,7 @@ if ($result!=null)
 	print "<tr style='background-color:#aaaaaa'><td>Action</td><td>ID</td><td>First Name</td><td>Last Name</td></tr>";
 	for ($i=0;$i<count($result);$i++){
         $vals= $result[$i];
-        print"<tr><td><a href='delete.php?q=$i' id='$i'>Delete</a></td><td>";
+        print"<tr><td><a class='button' href='delete.php?q=$i' id='$i'>Delete</a><a href='update.php?q=$i' id='$i'> Update</a><td>";
 		print  $vals["id"] . "</td><td>";
 		print $vals["firstname"] . "</td><td>";
 		print $vals["lastname"] . "</td></tr>";

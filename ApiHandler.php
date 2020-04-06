@@ -1,4 +1,5 @@
 <?php
+//api handler to assign curl options to relevant call
 function callAPI($method, $url, $request){
    $handle = curl_init();
    switch ($method){
@@ -24,9 +25,6 @@ function callAPI($method, $url, $request){
          curl_setopt($handle, CURLOPT_CUSTOMREQUEST, "DELETE"); 
          curl_setopt($handle, CURLOPT_POSTFIELDS, $request);
 
-         // default:
-         // if ($request)
-         //     $handle = sprintf("%s?%s", $url, http_build_query($request));
    }
 
    curl_setopt($handle, CURLOPT_HTTPHEADER, [
@@ -72,12 +70,12 @@ function json_response($data=null, $httpStatus=200)
     
 }
 
+//save to json file
 function saveToFile($data, $saveTo)
 {
    $file = fopen($saveTo,'w');
    fwrite($file, $data);
    fclose($file);
-
 }
 
 

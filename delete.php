@@ -11,7 +11,8 @@ $result = json_decode($output, true);
 
 print "<!DOCTYPE html> <html><head><title>cURL</title></head><body>";
 print"<h3>The User was removed successfully</h3>";
-print"<a href='form.html'>Add user</a>";
+print"<a href='form.html'>Add user</a> </br>";
+print"<a href='read.php'>Show all users</a></br>";
 print "<table border='1' align='center' width='30%'>";
 
 if ($result!=null)

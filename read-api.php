@@ -1,16 +1,15 @@
 <?php
-include('ApiHandler.php');
-
+// required headers
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
-$q=$_REQUEST['q'];
+$q = (isset($_REQUEST['q'])) ? $_REQUEST['q'] : null;
 
-	if ($q==null){
-		include "employees.json";
-		exit;
-	}
-	
+if ($q==null){
+	include "employees.json";
+	exit;
+}
+
 	$json  = file_get_contents("employees.json"); //read json from URL
 	$obj = json_decode($json, true); //convert json string to array
 
@@ -32,7 +31,5 @@ $q=$_REQUEST['q'];
 		echo '{"message":"not found"}';
 	
 	echo "]";
-
-
 
 ?>
