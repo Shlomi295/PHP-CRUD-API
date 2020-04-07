@@ -1,19 +1,18 @@
 <?php
+include('ApiHandler.php');
 
 $q= (isset($_GET['q'])) ? $_GET['q'] : null;
 
 if ($q!=null)
-	$url = "http://localhost/api/read-api.php?q=".$q;
+	$url = getBaseUrl()."read-api.php?q=".$q;
 else
-	$url = "http://localhost/api/read-api.php";
+	$url = getBaseUrl()."read-api.php";
 
 
 
-	$handle = curl_init();
-	curl_setopt($handle, CURLOPT_URL, $url);
-	curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-	$output = curl_exec($handle);
-	curl_close($handle);
+$output = callAPI("GET", $url, null); // call api handler
+
+
 $result= json_decode($output, true);
 
 print "<!DOCTYPE html> <html><head><title>cURL</title></head><body>";
