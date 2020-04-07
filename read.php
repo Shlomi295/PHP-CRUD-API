@@ -9,13 +9,13 @@ else
 	$url = getBaseUrl()."read-api.php";
 
 
-
 $output = callAPI("GET", $url, null); // call api handler
 $result= json_decode($output, true);
 
 print "<!DOCTYPE html> <html><head><title>cURL</title></head><body>";
 print "<table border='1' width='30%'>";
 
+//This is working on local but not on public server for some reason
 $key = array_key_first($result[0]);
 
 if ($key != "message")
@@ -27,7 +27,10 @@ if ($key != "message")
 		print $vals["firstname"] . "</td><td>";
 		print $vals["lastname"] . "</td></tr>";
 	}
-	print "</table></body></html>";
+	print "</table>";
+	print"<a href='form.html'>Add user</a> </br>";
+	print"<a href='read.php'>Show all u55sers</a></br>";
+	print "</body></html>";
 } 
 else {
 	
@@ -36,7 +39,13 @@ else {
 		$vals= $result[$i];
 		print "<tr><td>" . $vals["message"] . "</td></tr>";
 	}
-	print "</table></body></html>";
+
+	
+
+	print "</table>";
+	print"<a href='form.html'>Add user</a> </br>";
+	print"<a href='read.php'>Show all users</a></br>";
+	print"</body></html>";
 }
 
 
