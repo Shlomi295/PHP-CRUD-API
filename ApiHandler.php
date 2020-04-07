@@ -51,6 +51,7 @@ function callAPI($method, $url, $request){
 
 }
 
+//get base URL, don't forget to swap this between local and server
 function getBaseUrl()
 {
    return "http://localhost/api/";

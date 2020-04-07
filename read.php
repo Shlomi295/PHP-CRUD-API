@@ -11,8 +11,6 @@ else
 
 
 $output = callAPI("GET", $url, null); // call api handler
-
-
 $result= json_decode($output, true);
 
 print "<!DOCTYPE html> <html><head><title>cURL</title></head><body>";
