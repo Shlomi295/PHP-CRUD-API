@@ -20,9 +20,10 @@ if ($result!=null)
 	print "<tr style='background-color:#aaaaaa'><td>Action</td><td>ID</td><td>First Name</td><td>Last Name</td></tr>";
 	for ($i=0;$i<count($result);$i++){
         $vals= $result[$i];
-        print"<tr><td><a class='button' href='delete.php?q=$i' id='$i'>Delete</a><a href='update.php?q=$i' id='$i'> Update</a><td>";
-		print  $vals["id"] . "</td><td>";
-		print $vals["firstname"] . "</td><td>";
+        print"<tr bgcolor='#006633'><td style='background:#CCFFCC;color:#000700'><a class='button' href='delete.php?q=$i' id='$i'>Delete</a><a href='update.php?q=$i' id='$i'> Update</a></td>";
+		print "<td width='50' style='background:#CCFFCC;color:#000700'>" . $vals["id"] . "</td>";
+		print "<td width='150' style='background:#CCFFCC;color:#000700'>";
+		print $vals["firstname"] . "</td><td width='150' style='background:#CCFFCC;color:#000700'>";
 		print $vals["lastname"] . "</td></tr>";
 	}
 	print "</table></body></html>";
