@@ -3,7 +3,7 @@
 $q= (isset($_GET['q'])) ? $_GET['q'] : null;
 
 if ($q!=null)
-$url = "http://localhost/api/read-api.php/read-api.php?q=".$q;
+	$url = "http://localhost/api/read-api.php?q=".$q;
 else
 	$url = "http://localhost/api/read-api.php";
 
@@ -19,10 +19,9 @@ $result= json_decode($output, true);
 print "<!DOCTYPE html> <html><head><title>cURL</title></head><body>";
 print "<table border='1' width='30%'>";
 
-$key = array_search ('not found', $result);
+$key = array_key_first($result[0]);
 
-$index = "message";
-if (!$key)
+if ($key != "message")
 {
 	print "<tr style='background-color:#aaaaaa'><td>ID</td><td>First Name</td><td>Last Name</td></tr>";
 	for ($i=0;$i<count($result);$i++){
