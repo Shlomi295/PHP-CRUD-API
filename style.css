@@ -25,3 +25,43 @@
 a{
     color: black;
 }
+
+input[type=text],input[type=number] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    background-color: #afc7be;
+  color: black;
+  }
+  
+  input[type=text]:focus {
+    background-color: lightblue;
+  }
+
+  input[type=button], input[type=submit], input[type=reset] {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  a,td{
+    font-family: 'Courier New', Courier, monospace;
+
+  }
+
+  .label, h2 {
+    color:black;
+    padding: 8px;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  form { 
+    width: 250px;
+    background: #87879030;
+    padding: 90px;
+    }
+
