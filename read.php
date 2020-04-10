@@ -27,7 +27,7 @@ if ($key != "message")
 	for ($i=0;$i<count($result);$i++){
 		$vals= $result[$i];
 		$id = $vals["id"];
-		print "<tr bgcolor='#006633'><td width='50' style='background:#CCFFCC;color:#000700'><a href='read.php?q=".$id."'>" . $vals["id"] . "</a></td><td width='150' style='background:#CCFFCC;color:#000700'>";
+		print "<tr bgcolor='#006633'><td width='50' style='background:#56b356;color:#000700'><a href='read.php?q=".$id."'>" . $vals["id"] . "</a></td><td width='150' style='background:#CCFFCC;color:#000700'>";
 		print $vals["firstname"] . "</td><td width='150' style='background:#CCFFCC;color:#000700'>";
 		print $vals["lastname"] . "</td></tr>";
 	}
