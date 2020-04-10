@@ -14,9 +14,7 @@ print "<!DOCTYPE html> <html><head><title>cURL</title>
    type = 'text/css'
    href = 'Style.css' /></head><body>";
 print"<h3>The User was removed successfully</h3>";
-print"<a href='form.html'>Add user</a> </br>";
-print"<a href='read.php'>Show all users</a></br>";
-print "<table border='1' align='center' width='30%'>";
+print "<table border='1' width='30%'>";
 
 if ($result!=null)
 {
@@ -29,7 +27,11 @@ if ($result!=null)
 		print $vals["firstname"] . "</td><td width='150' style='background:#CCFFCC;color:#000700'>";
 		print $vals["lastname"] . "</td></tr>";
 	}
-	print "</table></body></html>";
+	print "</table>";
+	print"<a href='form.html'>Add user</a> </br>";
+	print"<a href='read.php'>Show all users</a></br>";
+	print"<a href='create.php'>Edit users</a></br>";
+	print "</body></html>";
 } else {
 	print "<tr style='background-color:#aaaaaa'><td>Message</td></tr>";
 	for ($i=0;$i<count($result);$i++){
@@ -37,13 +39,9 @@ if ($result!=null)
 		print "<tr><td>" . $vals["message"] . "</td></tr>";
 	}
     print "</table>";
-    print "<ul>
-    <li><a href='form.html'>Add User</a></li>
-    </ul>";
-
-    echo("<a href='form.html'>Add User</a>");
-
-    print"</body></html>";
+	print"<a href='form.html'>Add user</a> </br>";
+	print"<a href='read.php'>Show all users</a></br>";
+	print "</body></html>";
    
 }
 ?>

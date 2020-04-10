@@ -16,7 +16,7 @@ print "<!DOCTYPE html> <html><head><title>cURL</title>
 <link rel = 'stylesheet'
    type = 'text/css'
    href = 'Style.css' /></head><body>";
-print "<table border='0'  align='center' bgcolor='#339933' cellpadding='5' cellspacing='1'>";
+print "<table border='0'   bgcolor='#339933' cellpadding='5' cellspacing='1'>";
 
 //This is working on local but not on public server for some reason
 $key = array_key_first($result[0]);
@@ -27,7 +27,7 @@ if ($key != "message")
 	for ($i=0;$i<count($result);$i++){
 		$vals= $result[$i];
 		$id = $vals["id"];
-		print "<tr bgcolor='#006633'><td width='50' style='color:#ffff99'><a href='read.php?q=".$id."'>" . $vals["id"] . "</a></td><td width='150' style='background:#CCFFCC;color:#000700'>";
+		print "<tr bgcolor='#006633'><td width='50' style='background:#CCFFCC;color:#000700'><a href='read.php?q=".$id."'>" . $vals["id"] . "</a></td><td width='150' style='background:#CCFFCC;color:#000700'>";
 		print $vals["firstname"] . "</td><td width='150' style='background:#CCFFCC;color:#000700'>";
 		print $vals["lastname"] . "</td></tr>";
 	}
@@ -45,7 +45,6 @@ else {
 		print "<tr><td>" . $vals["message"] . "</td></tr>";
 	}
 
-	
 
 	print "</table>";
 	print"<a href='form.html'>Add user</a> </br>";

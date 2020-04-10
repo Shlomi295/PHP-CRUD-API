@@ -30,10 +30,9 @@ print "<!DOCTYPE html> <html><head><title>cURL</title>
 <link rel = 'stylesheet'
    type = 'text/css'
    href = 'Style.css' /></head><body>";
-print"<a href='form.html'>Add user</a> </br>";
-print"<a href='read.php'>Show all users</a></br>";
 
-print "<table border='1' align='center' width='30%'>";
+
+print "<table border='1' width='30%'>";
 
 if ($result!=null)
 {
@@ -46,14 +45,23 @@ if ($result!=null)
 		print $vals["firstname"] . "</td><td width='150' style='background:#CCFFCC;color:#000700'>";
 		print $vals["lastname"] . "</td></tr>";
 	}
-	print "</table></body></html>";
-} else {
+	print "</table>";
+	print"<a href='form.html'>Add user</a> </br>";
+	print"<a href='read.php'>Show all users</a></br>";
+	print "</body></html>";
+} 
+else {
+	
 	print "<tr style='background-color:#aaaaaa'><td>Message</td></tr>";
 	for ($i=0;$i<count($result);$i++){
 		$vals= $result[$i];
 		print "<tr><td>" . $vals["message"] . "</td></tr>";
 	}
-    print "</table>
-    </body></html>";
+
+
+	print "</table>";
+	print"<a href='form.html'>Add user</a> </br>";
+	print"<a href='read.php'>Show all users</a></br>";
+	print"</body></html>";
 }
 ?>
