@@ -12,8 +12,11 @@ else
 $output = callAPI("GET", $url, null); // call api handler
 $result= json_decode($output, true);
 
-print "<!DOCTYPE html> <html><head><title>cURL</title></head><body>";
-print "<table border='0' bgcolor='#339933' cellpadding='5' cellspacing='1'>";
+print "<!DOCTYPE html> <html><head><title>cURL</title>
+<link rel = 'stylesheet'
+   type = 'text/css'
+   href = 'Style.css' /></head><body>";
+print "<table border='0'  align='center' bgcolor='#339933' cellpadding='5' cellspacing='1'>";
 
 //This is working on local but not on public server for some reason
 $key = array_key_first($result[0]);
@@ -23,7 +26,8 @@ if ($key != "message")
 	print "<tr style='background-color:#aaaaaa'><td>ID</td><td>First Name</td><td>Last Name</td></tr>";
 	for ($i=0;$i<count($result);$i++){
 		$vals= $result[$i];
-		print "<tr bgcolor='#006633'><td width='50' style='color:#ffff99'>" . $vals["id"] . "</td><td width='150' style='background:#CCFFCC;color:#000700'>";
+		$id = $vals["id"];
+		print "<tr bgcolor='#006633'><td width='50' style='color:#ffff99'><a href='read.php?q=".$id."'>" . $vals["id"] . "</a></td><td width='150' style='background:#CCFFCC;color:#000700'>";
 		print $vals["firstname"] . "</td><td width='150' style='background:#CCFFCC;color:#000700'>";
 		print $vals["lastname"] . "</td></tr>";
 	}

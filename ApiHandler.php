@@ -11,8 +11,7 @@ function callAPI($method, $url, $request){
 
       case "PUT":
          curl_setopt($handle, CURLOPT_CUSTOMREQUEST, "PUT");
-         if ($request)
-            curl_setopt($handle, CURLOPT_POSTFIELDS, $request);			 					
+         curl_setopt($handle, CURLOPT_POSTFIELDS, $request);			 					
          break;
       
       case "POST":
