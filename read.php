@@ -34,6 +34,7 @@ if ($key != "message")
 	print "</table>";
 	print"<a href='form.html'>Add user</a> </br>";
 	print"<a href='read.php'>Show all users</a></br>";
+	print"<a href='create.php'>Edit users</a></br>";
 	print "</body></html>";
 } 
 else {

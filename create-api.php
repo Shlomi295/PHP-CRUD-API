@@ -5,7 +5,13 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 
+
 $postData = file_get_contents('php://input');
+
+if ($postData==null){
+	include "employees.json";
+	exit;
+}
 
 $json = file_get_contents('employees.json');
 $obj = json_decode($postData,true);

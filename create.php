@@ -4,17 +4,27 @@ include('ApiHandler.php');
 $url = getBaseUrl()."create-api.php";
 
 $postdata = file_get_contents("php://input");
-$id = $_REQUEST["id"];
-$firstname = $_REQUEST["firstname"];
-$lastname = $_REQUEST["lastname"];
 
-$arrayRequest = array("id"=>$id,"firstname"=>$firstname,"lastname"=>$lastname);
+if($postdata!=null)
+{
+	$id = $_REQUEST["id"];
+	$firstname = $_REQUEST["firstname"];
+	$lastname = $_REQUEST["lastname"];
+	
+	$arrayRequest = array("id"=>$id,"firstname"=>$firstname,"lastname"=>$lastname);
+	
+	
+	$json = json_encode($arrayRequest,true);
+	
+	$output = callAPI("POST", $url, $json); // call api handler
+	$result = json_decode($output, true);
+}
+else
+{
+	$output = callAPI("POST", $url, null); // call api handler
+	$result = json_decode($output, true);
+}
 
-
-$json = json_encode($arrayRequest,true);
-
-$output = callAPI("POST", $url, $json); // call api handler
-$result = json_decode($output, true);
 
 print "<!DOCTYPE html> <html><head><title>cURL</title>
 <link rel = 'stylesheet'
