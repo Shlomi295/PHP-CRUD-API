@@ -10,7 +10,7 @@ function callAPI($method, $url, $request){
          break;
 
       case "PUT":
-         curl_setopt($handle, CURLOPT_CUSTOMREQUEST, "PUT");
+         curl_setopt($handle, CURLOPT_CUSTOMREQUEST, "POST");
          curl_setopt($handle, CURLOPT_POSTFIELDS, $request);			 					
          break;
       
@@ -21,7 +21,7 @@ function callAPI($method, $url, $request){
          break;
 
        case "DELETE": 
-         curl_setopt($handle, CURLOPT_CUSTOMREQUEST, "DELETE"); 
+         curl_setopt($handle, CURLOPT_CUSTOMREQUEST, "GET"); 
          curl_setopt($handle, CURLOPT_POSTFIELDS, $request);
 
    }
@@ -53,7 +53,7 @@ function callAPI($method, $url, $request){
 //get base URL, don't forget to swap this between local and server
 function getBaseUrl()
 {
-   return "http://localhost/api/";
+   return "https://personal-sites.deakin.edu.au/~smoreh/sit780/api/";
 }
 
 

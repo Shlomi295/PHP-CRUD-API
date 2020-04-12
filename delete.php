@@ -12,7 +12,7 @@ $result = json_decode($output, true);
 print "<!DOCTYPE html> <html><head><title>cURL</title>
 <link rel = 'stylesheet'
    type = 'text/css'
-   href = 'Style.css' /></head><body>";
+   href = 'style.css' /></head><body>";
 print"<h3>The User was removed successfully</h3>";
 print "<table border='1' width='30%'>";
 

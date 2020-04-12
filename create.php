@@ -29,7 +29,7 @@ else
 print "<!DOCTYPE html> <html><head><title>cURL</title>
 <link rel = 'stylesheet'
    type = 'text/css'
-   href = 'Style.css' /></head><body>";
+   href = 'style.css' /></head><body>";
 
 
 print "<table border='1' width='30%'>";

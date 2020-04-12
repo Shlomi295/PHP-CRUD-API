@@ -15,13 +15,13 @@ $result= json_decode($output, true);
 print "<!DOCTYPE html> <html><head><title>cURL</title>
 <link rel = 'stylesheet'
    type = 'text/css'
-   href = 'Style.css' /></head><body>";
+   href = 'style.css' /></head><body>";
 print "<table border='0'   bgcolor='#339933' cellpadding='5' cellspacing='1'>";
 
 //This is working on local but not on public server for some reason
-$key = array_key_first($result[0]);
+//$key = array_key_first($result[0]);
 
-if ($key != "message")
+if ($result[0]['message']==null)
 {
 	print "<tr style='background-color:#aaaaaa'><td>ID</td><td>First Name</td><td>Last Name</td></tr>";
 	for ($i=0;$i<count($result);$i++){
